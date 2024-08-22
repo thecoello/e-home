@@ -1,5 +1,5 @@
 import { useGSAP } from "@gsap/react"
-import gsap, { Bounce, Expo, Power2 } from "gsap"
+import gsap, { Expo, Power2 } from "gsap"
 import { useState } from "react"
 import SplitType from "split-type"
 
@@ -18,10 +18,33 @@ function scrollAnimate(trigger, start, end, toggleActions, scrub, onEnter, onLea
   })
 }
 
+const images = [
+  "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1992&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3"
+]
+
 function Slider() {
 
   const [sliderTotal, setSliderTotal] = useState(0)
   const [sliderCount, setSliderCount] = useState(1)
+
+  const Sliders = () => {
+    const sliderHtml = []
+    images.forEach((slider, i) => {
+      sliderHtml.push(
+        <div key={i+1} className="bg-black slider w-full h-screen flex justify-center items-center">
+          <div className="flex flex-row max-md:flex-col fixed top-[50vh] left-0 max-md:left-[30vw] justify-between z-[1] uppercase text-[0.8rem] text-center max-md:text-left">
+            <span className="text-white w-[40vw] pb-0 max-md:pb-1">Product Name</span>
+            <span className="text-white w-[40vw] pb-0 max-md:pb-1">Category Name</span>
+            <span className="text-white w-[20vw] opacity-0"> <span className="border p-1 bg-white text-black">Explore</span> </span>
+          </div>
+          <img className="image-slider object-cover object-bottom w-auto h-[70vh] max-md:h-[100vh] top-[15vh] max-md:top-0 opacity-1 z-0" src={slider} alt={`slider-${i + 1}`} />
+        </div>
+      )
+    })
+    return sliderHtml
+  }
 
   useGSAP(() => {
 
@@ -75,49 +98,15 @@ function Slider() {
   })
 
   return (
-
-    <div className="z-0">
-
-      <div className="overflow-hidden fixed top-0 translate-y-[50vh] left-[5vw] z-[1] rounded-full">
+    <div className="z-0 bg-black">
+      <div className="overflow-hidden fixed top-0 translate-y-[50vh] max-md:translate-y-[10vh] left-[5vw] z-[1] rounded-full">
         <span id="slidercount" className="text-white text-[0.8rem] opacity-0">{sliderCount} / {sliderTotal}</span>
       </div>
-
-      <div id="lineslidewrp" className="opacity-0 overflow-hidden w-[0.25vh] h-[20vh] fixed top-0 translate-y-[40vh] left-[10vw] rounded-full bg-white/25">
+      <div id="lineslidewrp" className="z-10 opacity-0 overflow-hidden w-[0.25vh] h-[20vh] fixed top-0 translate-y-[40vh] left-[10vw] rounded-full bg-white/25">
         <div id="lineslide" className="bg-white w-full h-[0%]" ></div>
       </div>
-
-      <div className="bg-black slider w-full h-screen flex justify-center items-center">
-        <div className="flex fixed top-[50vh] left-0 justify-between z-[1] uppercase text-[0.8rem] text-center">
-          <span className="text-white w-[40vw]">Product Name</span>
-          <span className="text-white w-[40vw]">Category Name</span>
-          <span className="text-white w-[20vw] opacity-0"> <span className="border p-1 bg-white text-black">Explore</span> </span>
-
-        </div>
-        <img className="image-slider object-cover object-bottom w-auto h-[70vh] top-[15vh] opacity-1 z-0" src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=1992&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-      </div>
-
-      <div className="bg-black slider w-full h-screen flex justify-center items-center">
-        <div className="flex fixed top-[50vh] left-0 justify-between z-[1] uppercase text-[0.8rem] text-center">
-          <span className="text-white w-[40vw]">Product Name</span>
-          <span className="text-white w-[40vw]">Category Name</span>
-          <span className="text-white w-[20vw] "> <span className="border p-1 bg-white text-black">Explore</span> </span>
-
-        </div>
-        <img className="image-slider object-cover object-bottom w-auto h-[70vh] top-[15vh] opacity-1 z-0" src="https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-      </div>
-
-      <div className="bg-black slider w-full h-screen flex justify-center items-center">
-        <div className="flex fixed top-[50vh] left-0 justify-between z-[1] uppercase text-[0.8rem] text-center">
-          <span className="text-white w-[40vw]">Product Name</span>
-          <span className="text-white w-[40vw]">Category Name</span>
-          <span className="text-white w-[20vw] "> <span className="border p-1 bg-white text-black">Explore</span> </span>
-
-        </div>
-        <img className="image-slider object-cover object-bottom w-auto h-[70vh] top-[15vh] opacity-1 z-0" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=2158&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-      </div>
-
-      <div className="h-[50vh] bg-black"></div>
-
+      {Sliders()}
+      <div className="h-[50vh] max-md:h-[0] bg-black"></div>
     </div>
   )
 }

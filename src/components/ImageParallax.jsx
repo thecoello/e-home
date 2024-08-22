@@ -18,7 +18,6 @@ function scrollAnimate(trigger, start, end, toggleActions, scrub, onEnter, onLea
   })
 }
 
-
 function ImageParallax({image}) {
   const imageContainer = useRef()
 
@@ -28,8 +27,8 @@ function ImageParallax({image}) {
   })
 
   return (
-    <div ref={imageContainer} className="w-full overflow-hidden h-[100vh] flex justify-center items-center">
-      <img className="object-contain w-full" src={'https://images.unsplash.com/photo-1512972972907-6d71529c5e92?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} />
+    <div ref={imageContainer} className="w-full overflow-hidden h-[100vh] max-md:h-[20vh] flex justify-center items-center">
+      <img className="object-fill w-full relative" src={'https://images.unsplash.com/photo-1512972972907-6d71529c5e92?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'} />
     </div>
   )
 }
