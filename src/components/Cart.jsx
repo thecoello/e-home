@@ -9,12 +9,12 @@ function Cart({cartStatus, setCloseCartFunction}) {
 
   useGSAP(()=>{
     if(cartStatus){
-      gsap.fromTo(cart.current,0.5,{x: '50vh'},{x: 0,ease: Expo.easeInOut})
+      gsap.fromTo(cart.current,0.5,{x: '50vw'},{x: 0,ease: Expo.easeInOut})
     }
   })
 
   const closeCart = contextSafe(() => {
-    gsap.fromTo(cart.current,0.5,{x: 0},{x: '50vh',ease: Expo.easeInOut, onComplete: ()=>{
+    gsap.fromTo(cart.current,0.5,{x: 0},{x: '50vw',ease: Expo.easeInOut, onComplete: ()=>{
       setCloseCartFunction()
     } })
   })
