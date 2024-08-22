@@ -9,18 +9,18 @@ function Cart({cartStatus, setCloseCartFunction}) {
 
   useGSAP(()=>{
     if(cartStatus){
-      gsap.fromTo(cart.current,0.5,{x: '50vw'},{x: 0,ease: Expo.easeInOut})
+      gsap.fromTo(cart.current,0.5,{x: '25vw'},{x: 0,ease: Expo.easeInOut})
     }
   })
 
   const closeCart = contextSafe(() => {
-    gsap.fromTo(cart.current,0.5,{x: 0},{x: '50vw',ease: Expo.easeInOut, onComplete: ()=>{
+    gsap.fromTo(cart.current,0.5,{x: 0},{x: '25vw',ease: Expo.easeInOut, onComplete: ()=>{
       setCloseCartFunction()
     } })
   })
 
   return (
-    <div ref={cart} className="w-[50vw] max-md:w-[100vw] h-screen bg-white fixed top-0 right-0 flex flex-col z-[999] p-4 uppercase">
+    <div ref={cart} className="w-[25vw] max-md:w-[100vw] h-screen bg-white fixed top-0 right-0 flex flex-col z-[999] p-4 uppercase">
 
       <div className="flex justify-between items-center border-b p-2">
         <span>Cart</span>
